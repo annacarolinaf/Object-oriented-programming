@@ -1,0 +1,94 @@
+/*Autor: Anna Carolina Farias
+Objetivo: Classe de uma calculadora apenas de números inteiros */
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Calculator {
+
+     public: 
+         Calculator (int vvalueA = 0, int vvalueB = 0, char voperacao = '+');
+         //~Calculator ();
+         bool testeValue (int vvalueA, int vvalueB);
+         bool testeOPeracao (char vopercao);
+         int getValueA () const;
+         int getValueB () const;
+         double getResultado () const;
+         char getOperacao () const;
+         void imprime() const;
+  
+     private: 
+         int valueA;
+         int valueB;
+         char operacao;
+         double resultado;
+
+};
+
+Calculator::Calculator (int vvalueA, int vvalueB, char voperacao){
+
+    if (testeValue(vvalueA, vvalueB)==true && (testeOPeracao(voperacao)==true)){
+        valueA = vvalueA;
+        valueB = vvalueB;
+        operacao = voperacao;
+
+        if (operacao=='+')
+           resultado = valueA + valueB;
+        else if (operacao=='-')
+           resultado = valueA - valueB;
+        else if (operacao=='x' || operacao=='X')
+           resultado = valueA*valueB; 
+        else 
+           resultado = valueA/(double)valueB;
+             
+    }
+
+}
+
+//Calculator::~Calculator();
+
+bool Calculator::testeValue (int vvalueA, int vvalueB){
+    if (vvalueA==(int)vvalueA && vvalueB==(int)vvalueB)
+      return true;
+    else 
+      return false;  
+}
+
+bool Calculator::testeOPeracao(char voperacao){
+    
+    if (voperacao== '+'|| voperacao=='-' || voperacao=='x' || voperacao == 'X')
+       return true;
+    else if ((voperacao=='/') && (getValueB()!=0))
+       return true;
+
+   else
+      return false;
+
+}
+
+int Calculator::getValueA() const{
+    return valueA;
+}
+
+int Calculator::getValueB() const{
+    return valueB;
+}
+
+double Calculator::getResultado() const{
+    return resultado;
+}
+
+char Calculator::getOperacao() const{
+    return operacao;
+}
+
+int main() {
+   Calculator c1(1, 1, '/');
+   if ((c1.testeOPeracao('/')==true) && (c1.testeValue(1,0)==true))
+    cout << "Resultado:" << c1.getResultado() << endl;
+   else 
+     cout << "Operação inválida" << endl;
+
+}
