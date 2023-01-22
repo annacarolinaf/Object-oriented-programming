@@ -9,25 +9,25 @@ using namespace std;
 class Calculator {
 
      public: 
-         Calculator (int vvalueA = 0, int vvalueB = 0, char voperacao = '+');
+         Calculator (float vvalueA = 0, float vvalueB = 0, char voperacao = '+');
          //~Calculator ();
-         bool testeValue (int vvalueA, int vvalueB);
+         bool testeValue (float vvalueA, float vvalueB);
          bool testeOPeracao (char vopercao);
-         int getValueA () const;
-         int getValueB () const;
+         float getValueA () const;
+         float getValueB () const;
          double getResultado () const;
          char getOperacao () const;
          void imprime() const;
   
      private: 
-         int valueA;
-         int valueB;
+         float valueA;
+         float valueB;
          char operacao;
          double resultado;
 
 };
 
-Calculator::Calculator (int vvalueA, int vvalueB, char voperacao){
+Calculator::Calculator (float vvalueA, float vvalueB, char voperacao){
 
     if (testeValue(vvalueA, vvalueB)==true && (testeOPeracao(voperacao)==true)){
         valueA = vvalueA;
@@ -49,8 +49,8 @@ Calculator::Calculator (int vvalueA, int vvalueB, char voperacao){
 
 //Calculator::~Calculator();
 
-bool Calculator::testeValue (int vvalueA, int vvalueB){
-    if (vvalueA==(int)vvalueA && vvalueB==(int)vvalueB)
+bool Calculator::testeValue (float vvalueA, float vvalueB){
+    if ((vvalueA==(int)vvalueA) && (vvalueB==(int)vvalueB))
       return true;
     else 
       return false;  
@@ -68,11 +68,11 @@ bool Calculator::testeOPeracao(char voperacao){
 
 }
 
-int Calculator::getValueA() const{
+float Calculator::getValueA() const{
     return valueA;
 }
 
-int Calculator::getValueB() const{
+float Calculator::getValueB() const{
     return valueB;
 }
 
@@ -86,8 +86,12 @@ char Calculator::getOperacao() const{
 
 int main() {
    Calculator c1(1, 1, '/');
-   if ((c1.testeOPeracao('/')==true) && (c1.testeValue(1,0)==true))
-    cout << "Resultado:" << c1.getResultado() << endl;
+
+   if ((c1.testeOPeracao('/')==true) && (c1.testeValue(1,1)==true)){
+    cout << "Operação: " << c1.getValueA() << c1.getOperacao() << c1.getValueB() << endl;
+    cout << "Resultado: " << c1.getResultado() << endl;
+   }
+
    else 
      cout << "Operação inválida" << endl;
 
