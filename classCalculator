@@ -1,7 +1,6 @@
 /*Autor: Anna Carolina Farias
 Objetivo: Classe de uma calculadora apenas de números inteiros */
 
-
 #include <iostream>
 #include <string>
 using namespace std;
